@@ -28,9 +28,17 @@ class LoginCommand extends Command
         $password = $input->getArgument('password');
 
         $client = new Client();
-        $res = $client->request('POST', "$url/rest/user/login?login=$username&password=$password");
 
-        $message = sprintf('%s, %s', $res->getStatusCode(), $input->getArgument('name'));
+        $response = $client->post("$url/rest/user/login", [
+            'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
+            'form_params' => ['login' => $username,
+            'password' => $password]
+        ]);
+
+        $cookie = $response->getHeader('Set-Cookie');
+
+
+        $message = sprintf('%s, %s', $response->getStatusCode(), $input->getArgument('name'));
         $output->writeln("<info>$message</info>");
     }
 
