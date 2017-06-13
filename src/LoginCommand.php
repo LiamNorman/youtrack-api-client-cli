@@ -35,7 +35,7 @@ class LoginCommand extends Command
 
         $cookie = $response->getHeader('Set-Cookie');
 
-        $dataDir = "../data/";
+        $dataDir = '../data/';
         file_put_contents("{$dataDir}authtoken.txt", $cookie);
 
         $message = sprintf('%s, %s', $response->getStatusCode(), $input->getArgument('name'));
