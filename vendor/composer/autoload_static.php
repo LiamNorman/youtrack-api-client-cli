@@ -16,7 +16,7 @@ class ComposerStaticInit4b673821a374aa695e11705045915360
     public static $prefixLengthsPsr4 = array (
         'Y' => 
         array (
-            'YoutrackApiClientCli\\' => 21,
+            'YouTrackApiClient\\' => 18,
         ),
         'S' => 
         array (
@@ -38,7 +38,7 @@ class ComposerStaticInit4b673821a374aa695e11705045915360
     );
 
     public static $prefixDirsPsr4 = array (
-        'YoutrackApiClientCli\\' => 
+        'YouTrackApiClient\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
