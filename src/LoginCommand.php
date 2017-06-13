@@ -16,12 +16,11 @@ class LoginCommand extends Command
              ->setDescription('Login to Youtrack')
              ->addArgument('name', InputArgument::REQUIRED, 'Your username.')
             ->addArgument('password', InputArgument::REQUIRED, 'Your password.');
-
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $url = "https://todotick.myjetbrains.com";
+        $url = 'https://todotick.myjetbrains.com';
 
         $username = $input->getArgument('name');
         $password = $input->getArgument('password');
@@ -29,9 +28,9 @@ class LoginCommand extends Command
         $client = new Client();
 
         $response = $client->post("$url/youtrack/rest/user/login", [
-            'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
+            'headers'     => ['Content-Type' => 'application/x-www-form-urlencoded'],
             'form_params' => ['login' => $username,
-            'password' => $password]
+            'password'                => $password, ],
         ]);
 
         $cookie = $response->getHeader('Set-Cookie');
@@ -42,6 +41,4 @@ class LoginCommand extends Command
         $message = sprintf('%s, %s', $response->getStatusCode(), $input->getArgument('name'));
         $output->writeln("<info>$message</info>");
     }
-
 }
-
